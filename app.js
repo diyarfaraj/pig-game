@@ -50,3 +50,17 @@ document.querySelector(".btn-roll").addEventListener("click", function() {
     document.querySelector(".dice").style.display = "none";
   }
 });
+
+document.querySelector("btn-hold").addEventListener("click", function() {
+  if (roundScore !== 1) {
+    // Add current score to globla score
+    scores[activePlayer] += roundScore;
+
+    document.querySelector("#score-" + activePlayer).textContent =
+      scores[activePlayer];
+
+    //Update the UI
+
+    //Check if player win the game
+  }
+});
