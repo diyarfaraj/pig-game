@@ -10,10 +10,14 @@ GAME RULES:
 */
 
 var scores, roundScore, activePlayer, gamePlaying;
+var lastDice;
+
 newGame();
 
+//when clicking newGame button
 document.querySelector(".btn-new").addEventListener("click", newGame);
 
+//Rolling the dice
 document.querySelector(".btn-roll").addEventListener("click", function() {
   if (gamePlaying) {
     //1.Radnom numeber
@@ -25,17 +29,25 @@ document.querySelector(".btn-roll").addEventListener("click", function() {
     diceDOM.src = "dice-" + dice + ".png";
 
     //3.update the round, if dice !== 1.
+
+    if (dice === 6 && lastDice === 6) {
+    }
+
     if (dice !== 1) {
-      //add soce
+      //add score
       roundScore += dice;
       document.querySelector(
         "#current-" + activePlayer
       ).textContent = roundScore;
+
+      //Previus roll 2 6s in a row
     } else {
       // next player
 
       nextPlayer();
     }
+
+    lastDice = dice;
   }
 });
 
